@@ -1,25 +1,7 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
-function preload() {
+game.state.add('Menu', Menu);
 
-}
+game.state.add('Game', Game);
 
-function create() {
-    game.stage.backgroundColor = "#ffffff";
-
-
-    var graphics = game.add.graphics(0, 0);
-
-
-    graphics.lineStyle(10, 0x000000, 0.8);
-
-    graphics.drawCircle(400, 300, 500);
-    graphics.endFill();
-
-    graphics.beginFill(0x000000);
-    graphics.drawCircle(400,300,10);
-    graphics.endFill();
-}
-
-function update() {
-}
+game.state.start('Menu');
