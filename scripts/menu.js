@@ -1,7 +1,7 @@
 var Menu = {
 
     preload : function() {
-        game.load.image('smiley', '../assets/smiley.png');
+        game.load.image('smiley', 'assets/smiley.png');
     },
 
     create: function () {

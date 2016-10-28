@@ -1,9 +1,9 @@
 var Game = {
-	function preload() {
+	preload : function() {
 
-	}
+	},
 
-	function create() {
+	create : function() {
 	    game.stage.backgroundColor = "#ffffff";
 
 
@@ -18,8 +18,8 @@ var Game = {
 	    graphics.beginFill(0x000000);
 	    graphics.drawCircle(400,300,10);
 	    graphics.endFill();
-	}
+	},
 
-	function update() {
+	update : function() {
 	}
 };
