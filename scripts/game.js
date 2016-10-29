@@ -9,7 +9,7 @@ var Game = {
 	create : function() {
 	    game.stage.backgroundColor = "#ffffff";
 
-	    game.physics.startSystem(Phaser.Physics.ARCADE);
+	    game.physics.startSystem(Phaser.Physics.NINJA);
 
 //	    var graphics = game.add.graphics(0, 0);
 		//  The platforms group contains the ground and the 2 ledges we can jump on
