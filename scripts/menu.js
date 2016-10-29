@@ -1,12 +1,10 @@
 var Menu = {
-
     preload : function() {
-        game.load.image('smiley', 'assets/smiley.png');
+        game.load.image('start-button', 'assets/start-button.png');
     },
-
     create: function () {
 
-        this.add.button(0, 0, 'smiley', this.startGame, this);
+        startButton = this.add.button(game.world.centerX - 100, 200, 'start-button', this.startGame, this);
 
     },
 
