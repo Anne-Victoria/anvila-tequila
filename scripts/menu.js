@@ -1,10 +1,10 @@
 var Menu = {
     preload : function() {
-        game.load.image('start-button', 'assets/start-button.png');
+        game.load.spritesheet('start-button', 'assets/start-button-sheet.png', 200, 100);
     },
     create: function () {
 
-        startButton = this.add.button(game.world.centerX - 100, 200, 'start-button', this.startGame, this);
+        startButton = this.add.button(game.world.centerX - 100, 200, 'start-button', this.startGame, this, 0, 0, 1);
 
     },
 
