@@ -12,7 +12,7 @@ var Game = {
 		//add backgound color
 	    game.stage.backgroundColor = "#ffffff";
 
-	    game.physics.startSystem(Phaser.Physics.ARCADE);
+	    game.physics.startSystem(Phaser.Physics.NINJA);
 
 		// create clock-group
     	clock = game.add.group();
