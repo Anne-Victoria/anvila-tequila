@@ -1,10 +1,8 @@
 var Game = {
 
 	preload : function() {
-		game.load.image('kachel','assets/kachel.png');
 		game.load.image('ghost','assets/ghost.png');
 		game.load.image('circle','assets/kreis.png');
-		game.load.image('platform','assets/platform.png');
 		game.load.image('candy-red', 'assets/candy-red.png');
 		game.load.image('candy-blue', 'assets/candy-blue.png');
 		game.load.image('candy-green', 'assets/candy-green.png');
@@ -17,7 +15,7 @@ var Game = {
 		counter = 0;
 		blockNumber = 22;
 
-		//add backgound color
+		//add background color
 	    game.stage.backgroundColor = "#1e2633";
 
 	    text = game.add.text(300, 50, "Level 1" , { font: "65px Arial", fill: "#ff0044", align: "center" });
@@ -56,7 +54,7 @@ var Game = {
 	    game.time.events.repeat(Phaser.Timer.SECOND, blockNumber, this.createBlock, this);
 
 	    //  The score
-    	scoreText = game.add.text(650, 100, 'score: 0', { fontSize: '32px', fill: '#000000' });
+    	scoreText = game.add.text(600, 50, 'score: 0', { fontSize: '32px', fill: '#000000' });
 
 	},
 
