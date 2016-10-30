@@ -18,7 +18,7 @@ var Game = {
 		//add background color
 	    game.stage.backgroundColor = "#1e2633";
 
-	    text = game.add.text(300, 50, "Level 1" , { font: "65px Arial", fill: "#ff0044", align: "center" });
+	    text = game.add.text(50, 50, "Level 1" , { fontSize: '40px', fill: "#ff0044", align: "center" });
 
 	    game.physics.startSystem(Phaser.Physics.NINJA);
 
@@ -54,7 +54,7 @@ var Game = {
 	    game.time.events.repeat(Phaser.Timer.SECOND, blockNumber, this.createBlock, this);
 
 	    //  The score
-    	scoreText = game.add.text(600, 50, 'score: 0', { fontSize: '32px', fill: '#000000' });
+    	scoreText = game.add.text(550, 50, 'Score: 0', { fontSize: '40px', fill: '#ffffff' });
 
 	},
 
