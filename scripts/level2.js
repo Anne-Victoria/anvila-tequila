@@ -1,4 +1,4 @@
-var Game = {
+var Level2 = {
 
 	preload : function() {
 		game.load.image('kachel','assets/kachel.png');
@@ -11,7 +11,7 @@ var Game = {
 
 		score = 0;
 		counter = 0;
-		blockNumber = 20;
+		blockNumber = 31;
 
 		//add backgound color
 	    game.stage.backgroundColor = "#ffffff";
@@ -57,12 +57,12 @@ var Game = {
     	//create and align blockparts
 	    x = 400;
 		y = 300;
-
+			z = Math.random() * blockNumber + 1;
    			block = blocks.create(x, y, 'kachel');
 	   		block.scale.setTo(0.1, 0.1);
 	   		block.checkWorldBounds = true;
 	   		block.outOfBoundsKill = true;
-	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, 600, 4000);
+	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, 600, 1500);
 	   		counter += 1;
 
 			this.ende();
@@ -110,14 +110,7 @@ var Game = {
 
 		if (counter == blockNumber){
 		  		console.log('ende');
-				console.log((3/4)*(blockNumber-1));
-		  		if (score <= (3/4)*(blockNumber-1)) {
-					this.state.start('Menu');
-		  		}
-		  		else
-		  		{
-		  			this.state.start('Level2');
-		  		};
+				this.state.start('Menu');
 		}
 	}
 
