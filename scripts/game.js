@@ -113,7 +113,8 @@ var Game = {
 		if (counter == blockNumber){
 		  		console.log('ende');
 				console.log((3/4)*(blockNumber-2));
-		  		if (score <= (3/4)*(blockNumber-2)) {
+		  		if (score <= 1) {
+		  		//(3/4)*(blockNumber-2)) {
 					this.state.start('Menu');
 		  		}
 		  		else

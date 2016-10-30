@@ -11,7 +11,7 @@ var Level2 = {
 
 		score = 0;
 		counter = 0;
-		blockNumber = 31;
+		blockNumber = 32;
 
 		//add backgound color
 	    game.stage.backgroundColor = "#ffffff";
@@ -51,7 +51,7 @@ var Level2 = {
 	    game.time.events.repeat(Phaser.Timer.SECOND , blockNumber, this.createBlock, this);
 
 	    //  The score
-    	scoreText = game.add.text(650, 100, 'score: 0', { fontSize: '32px', fill: '#000000' });
+    	scoreText = game.add.text(600, 100, 'score: 0', { fontSize: '32px', fill: '#000000' });
 
 	},
 
