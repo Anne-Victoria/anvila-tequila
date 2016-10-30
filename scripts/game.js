@@ -5,6 +5,10 @@ var Game = {
 		game.load.image('ghost','assets/ghost.png');
 		game.load.image('circle','assets/kreis.png');
 		game.load.image('platform','assets/platform.png');
+		game.load.image('candy-red', 'assets/candy-red.png');
+		game.load.image('candy-blue', 'assets/candy-blue.png');
+		game.load.image('candy-green', 'assets/candy-green.png');
+		game.load.image('candy-yellow', 'assets/candy-yellow.png');
 	},
 
 	create : function() {
@@ -49,7 +53,7 @@ var Game = {
 	    // player.checkWorldBounds = true;
 	    // player.body.collideWorldBounds = true;
 
-	    game.time.events.repeat(Phaser.Timer.SECOND , blockNumber, this.createBlock, this);
+	    game.time.events.repeat(Phaser.Timer.SECOND, blockNumber, this.createBlock, this);
 
 	    //  The score
     	scoreText = game.add.text(650, 100, 'score: 0', { fontSize: '32px', fill: '#000000' });
@@ -61,8 +65,24 @@ var Game = {
 	    x = 400;
 		y = 300;
 
-   			block = blocks.create(x, y, 'kachel');
-	   		block.scale.setTo(0.1, 0.1);
+		// lazy workaround
+		Zahl = ((Math.random() * 4) + 1);
+
+		if ((1 <= Zahl) && (Zahl < 2)) {
+			bonbon = 'candy-red';
+		}
+		else if ((2 <= Zahl) && (Zahl < 3)) {
+			bonbon = 'candy-yellow';
+		}
+		else if ((3 <= Zahl) && (Zahl < 4)) {
+			bonbon = 'candy-green';
+		}
+		else {
+			bonbon = 'candy-blue';
+		}
+
+   			block = blocks.create(x, y, bonbon);
+	   		block.scale.setTo(0.02, 0.02);
 	   		block.checkWorldBounds = true;
 	   		block.outOfBoundsKill = true;
 	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, 80, 0);
@@ -113,7 +133,7 @@ var Game = {
 
 		if (counter == blockNumber){
 		  		console.log('ende');
-				console.log((3/4)*(blockNumber-2));
+				console.log((3/4)*(blockNumber - 1));
 		  		if (score <= 1) {
 		  		//(3/4)*(blockNumber-2)) {
 					this.state.start('Menu');

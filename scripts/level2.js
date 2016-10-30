@@ -48,7 +48,7 @@ var Level2 = {
 	    // player.checkWorldBounds = true;
 	    // player.body.collideWorldBounds = true;
 
-	    game.time.events.repeat(Phaser.Timer.SECOND , blockNumber, this.createBlock, this);
+	    game.time.events.repeat(Phaser.Timer.SECOND * 0.8, blockNumber, this.createBlock, this);
 
 	    //  The score
     	scoreText = game.add.text(600, 100, 'score: 0', { fontSize: '32px', fill: '#000000' });
@@ -59,9 +59,25 @@ var Level2 = {
     	//create and align blockparts
 	    x = 400;
 		y = 300;
-			z = Math.random() * blockNumber + 1;
-   			block = blocks.create(x, y, 'kachel');
-	   		block.scale.setTo(0.1, 0.1);
+
+		// lazy workaroud
+		Zahl = ((Math.random() * 4) + 1);
+
+		if ((1 <= Zahl) && (Zahl < 2)) {
+			bonbon = 'candy-red';
+		}
+		else if ((2 <= Zahl) && (Zahl < 3)) {
+			bonbon = 'candy-yellow';
+		}
+		else if ((3 <= Zahl) && (Zahl < 4)) {
+			bonbon = 'candy-green';
+		}
+		else {
+			bonbon = 'candy-blue';
+		}
+
+   			block = blocks.create(x, y, bonbon);
+	   		block.scale.setTo(0.02, 0.02);
 	   		block.checkWorldBounds = true;
 	   		block.outOfBoundsKill = true;
 	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, (Math.random() * 100) + 60, 0);
