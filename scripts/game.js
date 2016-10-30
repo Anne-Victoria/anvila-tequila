@@ -2,7 +2,7 @@ var Game = {
 
 	preload : function() {
 		game.load.image('kachel','assets/kachel.png');
-		game.load.image('dot','assets/dot.png');
+		game.load.image('ghost','assets/ghost.png');
 		game.load.image('circle','assets/kreis.png');
 		game.load.image('platform','assets/platform.png');
 	},
@@ -14,7 +14,7 @@ var Game = {
 		blockNumber = 22;
 
 		//add backgound color
-	    game.stage.backgroundColor = "#ffffff";
+	    game.stage.backgroundColor = "#1e2633";
 
 	    text = game.add.text(300, 50, "Level 1" , { font: "65px Arial", fill: "#ff0044", align: "center" });
 
@@ -22,7 +22,7 @@ var Game = {
 
 	    // create circle
 	    var graphics = game.add.graphics(0, 0);
-	    graphics.lineStyle(3, 0x000000, 1);
+	    graphics.lineStyle(3, 0xffffff, 0.5);
 	    graphics.drawCircle(400, 300, 300);
 
 	    // starting point for player 2
@@ -31,9 +31,10 @@ var Game = {
 	    var startY = this.calculateY(300, 150, currentAngle);
 
 	    // player 2 generation
-	    player = game.add.sprite(startX, startY, 'dot');
+	    player = game.add.sprite(startX, startY, 'ghost');
 	    game.physics.arcade.enable(player);
 	    player.anchor.setTo(0.5);
+	    player.scale.setTo(0.35);
 
 	    // create group for block
 		blocks = game.add.group();
