@@ -104,7 +104,7 @@ var Level3= {
 		   		counter += 1;
 		   	};
 			
-//			this.ende();
+			this.ende();
 
 	},
 
