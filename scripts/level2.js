@@ -16,6 +16,8 @@ var Level2 = {
 		//add backgound color
 	    game.stage.backgroundColor = "#ffffff";
 
+	    text = game.add.text(300, 50, "Level 2" , { font: "65px Arial", fill: "#ff0044", align: "center" });
+
 	    game.physics.startSystem(Phaser.Physics.NINJA);
 
 	    // create circle
@@ -62,7 +64,7 @@ var Level2 = {
 	   		block.scale.setTo(0.1, 0.1);
 	   		block.checkWorldBounds = true;
 	   		block.outOfBoundsKill = true;
-	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, 600, 1500);
+	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, (Math.random() * 100) + 60, 0);
 	   		counter += 1;
 
 			this.ende();

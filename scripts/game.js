@@ -11,10 +11,12 @@ var Game = {
 
 		score = 0;
 		counter = 0;
-		blockNumber = 20;
+		blockNumber = 22;
 
 		//add backgound color
 	    game.stage.backgroundColor = "#ffffff";
+
+	    text = game.add.text(300, 50, "Level 1" , { font: "65px Arial", fill: "#ff0044", align: "center" });
 
 	    game.physics.startSystem(Phaser.Physics.NINJA);
 
@@ -62,7 +64,7 @@ var Game = {
 	   		block.scale.setTo(0.1, 0.1);
 	   		block.checkWorldBounds = true;
 	   		block.outOfBoundsKill = true;
-	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, 600, 4000);
+	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, 80, 0);
 	   		counter += 1;
 
 			this.ende();
@@ -110,8 +112,8 @@ var Game = {
 
 		if (counter == blockNumber){
 		  		console.log('ende');
-				console.log((3/4)*(blockNumber-1));
-		  		if (score <= (3/4)*(blockNumber-1)) {
+				console.log((3/4)*(blockNumber-2));
+		  		if (score <= (3/4)*(blockNumber-2)) {
 					this.state.start('Menu');
 		  		}
 		  		else
