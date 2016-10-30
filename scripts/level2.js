@@ -1,10 +1,12 @@
 var Level2 = {
 
 	preload : function() {
-		game.load.image('kachel','assets/kachel.png');
-		game.load.image('dot','assets/dot.png');
+		game.load.image('ghost','assets/ghost.png');
 		game.load.image('circle','assets/kreis.png');
-		game.load.image('platform','assets/platform.png');
+		game.load.image('candy-red', 'assets/candy-red.png');
+		game.load.image('candy-blue', 'assets/candy-blue.png');
+		game.load.image('candy-green', 'assets/candy-green.png');
+		game.load.image('candy-yellow', 'assets/candy-yellow.png');
 	},
 
 	create : function() {
@@ -14,7 +16,7 @@ var Level2 = {
 		blockNumber = 32;
 
 		//add backgound color
-	    game.stage.backgroundColor = "#ffffff";
+	    //game.stage.backgroundColor = "#ffffff";
 
 	    text = game.add.text(300, 50, "Level 2" , { font: "65px Arial", fill: "#ff0044", align: "center" });
 
@@ -22,7 +24,7 @@ var Level2 = {
 
 	    // create circle
 	    var graphics = game.add.graphics(0, 0);
-	    graphics.lineStyle(3, 0x000000, 1);
+	    graphics.lineStyle(3, 0xffffff, 0.5);
 	    graphics.drawCircle(400, 300, 300);
 
 	    // starting point for player 2
@@ -31,9 +33,11 @@ var Level2 = {
 	    var startY = this.calculateY(300, 150, currentAngle);
 
 	    // player 2 generation
-	    player = game.add.sprite(startX, startY, 'dot');
+	    player = game.add.sprite(startX, startY, 'ghost');
 	    game.physics.arcade.enable(player);
 	    player.anchor.setTo(0.5);
+	    player.scale.setTo(0.35);
+
 
 	    // create group for block
 		blocks = game.add.group();
@@ -51,7 +55,7 @@ var Level2 = {
 	    game.time.events.repeat(Phaser.Timer.SECOND * 0.8, blockNumber, this.createBlock, this);
 
 	    //  The score
-    	scoreText = game.add.text(600, 100, 'score: 0', { fontSize: '32px', fill: '#000000' });
+    	scoreText = game.add.text(600, 50, 'score: 0', { fontSize: '32px', fill: '#000000' });
 
 	},
 
