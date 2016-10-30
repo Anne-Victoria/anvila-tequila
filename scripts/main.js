@@ -6,4 +6,6 @@ game.state.add('Game', Game);
 
 game.state.add('Level2', Level2);
 
+game.state.add('Level3', Level3);
+
 game.state.start('Menu');

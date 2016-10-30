@@ -7,13 +7,14 @@ var Game = {
 		game.load.image('candy-blue', 'assets/candy-blue.png');
 		game.load.image('candy-green', 'assets/candy-green.png');
 		game.load.image('candy-yellow', 'assets/candy-yellow.png');
+		game.load.image('background', 'assets/hintergrund.png');
 	},
 
 	create : function() {
 
 		score = 0;
 		counter = 0;
-		blockNumber = 22;
+		blockNumber = 21;
 
 		//add background color
 	    game.stage.backgroundColor = "#1e2633";
@@ -129,11 +130,10 @@ var Game = {
 
 	ende: function() {
 
-		if (counter == blockNumber){
+		if (counter === blockNumber){
 		  		console.log('ende');
 				console.log((3/4)*(blockNumber - 1));
-		  		if (score <= 1) {
-		  		//(3/4)*(blockNumber-2)) {
+		  		if (score <= (3/4)*(blockNumber- 1)) {
 					this.state.start('Menu');
 		  		}
 		  		else

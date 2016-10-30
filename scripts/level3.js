@@ -1,4 +1,4 @@
-var Level2 = {
+var Level3= {
 
 	preload : function() {
 		game.load.image('ghost','assets/ghost.png');
@@ -7,18 +7,20 @@ var Level2 = {
 		game.load.image('candy-blue', 'assets/candy-blue.png');
 		game.load.image('candy-green', 'assets/candy-green.png');
 		game.load.image('candy-yellow', 'assets/candy-yellow.png');
+		game.load.image('candy-pink', 'assets/candy-pink.png');
 	},
 
 	create : function() {
 
 		score = 0;
 		counter = 0;
-		blockNumber = 31;
-
+		blockNumber = 32;
+		normalSpeed = (Math.random() * 100) + 80;
+		speed = normalSpeed;
 		//add backgound color
 	    //game.stage.backgroundColor = "#ffffff";
 
-	    text = game.add.text(300, 50, "Level 2" , { font: "65px Arial", fill: "#ff0044", align: "center" });
+	    text = game.add.text(300, 50, "Level 3" , { font: "65px Arial", fill: "#ff0044", align: "center" });
 
 	    game.physics.startSystem(Phaser.Physics.NINJA);
 
@@ -52,7 +54,7 @@ var Level2 = {
 	    // player.checkWorldBounds = true;
 	    // player.body.collideWorldBounds = true;
 
-	    game.time.events.repeat(Phaser.Timer.SECOND * 0.8, blockNumber, this.createBlock, this);
+	    game.time.events.repeat(Phaser.Timer.SECOND, blockNumber, this.createBlock, this);
 
 	    //  The score
     	scoreText = game.add.text(600, 50, 'Score: 0', { fontSize: '32px', fill: '#000000' });
@@ -64,30 +66,44 @@ var Level2 = {
 	    x = 400;
 		y = 300;
 
-		// lazy workaroud
-		Zahl = ((Math.random() * 4) + 1);
+		specialblock = false;
 
-		if ((1 <= Zahl) && (Zahl < 2)) {
-			bonbon = 'candy-red';
-		}
-		else if ((2 <= Zahl) && (Zahl < 3)) {
-			bonbon = 'candy-yellow';
-		}
-		else if ((3 <= Zahl) && (Zahl < 4)) {
-			bonbon = 'candy-green';
+		z = ((Math.random() * 10) + 1);
+
+		if (z <= 2) {
+			specialblock = blocks.create(x, y, 'candy-pink');
+	   		specialblock.scale.setTo(0.02, 0.02);
+	   		specialblock.checkWorldBounds = true;
+	   		specialblock.outOfBoundsKill = true;
+	   		game.physics.arcade.moveToXY(specialblock, (Math.random() * 800) + 1, (Math.random() * 600) + 1, speed, 0);
+	   		counter += 1;
 		}
 		else {
-			bonbon = 'candy-blue';
-		}
+			// lazy workaroud
+			Zahl = ((Math.random() * 4) + 1);
 
-   			block = blocks.create(x, y, bonbon);
-	   		block.scale.setTo(0.02, 0.02);
-	   		block.checkWorldBounds = true;
-	   		block.outOfBoundsKill = true;
-	   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, (Math.random() * 100) + 60, 0);
-	   		counter += 1;
+			if ((1 <= Zahl) && (Zahl < 2)) {
+				bonbon = 'candy-red';
+			}
+			else if ((2 <= Zahl) && (Zahl < 3)) {
+				bonbon = 'candy-yellow';
+			}
+			else if ((3 <= Zahl) && (Zahl < 4)) {
+				bonbon = 'candy-green';
+			}
+			else {
+				bonbon = 'candy-blue';
+			}
 
-			this.ende();
+	   			block = blocks.create(x, y, bonbon);
+		   		block.scale.setTo(0.02, 0.02);
+		   		block.checkWorldBounds = true;
+		   		block.outOfBoundsKill = true;
+		   		game.physics.arcade.moveToXY(block, (Math.random() * 800) + 1, (Math.random() * 600) + 1, speed, 0);
+		   		counter += 1;
+		   	};
+			
+//			this.ende();
 
 	},
 
@@ -122,25 +138,30 @@ var Level2 = {
     
 	    // Removes the star from the screen
 	    block.kill();
-
+	    if (block == specialblock){
+	    	console.log('boo');
+	    	if (speed !== 40){
+	    		speed = 40;
+	    		game.time.events.add(1000, this.cheatTime, this);
+	    	};
+	    	//Phaser.Time.events.add(delay, callback, callbackContext, arguments) : Phaser.TimerEvent;
+	    };
 	    //  Add and update the score
 	    score += 1;
 	    scoreText.text = 'Score: ' + score;
 	},
 
+	cheatTime: function() {
+		console.log('much cheat');
+		speed = normalSpeed;
+	},
+
 	ende: function() {
 
 		if (counter == blockNumber){
-		  	console.log('ende');
-			console.log((3/4)*(blockNumber - 1));
-		  	if (score <= (3/4)*(blockNumber- 1)) {
+		  		console.log('ende');
 				this.state.start('Menu');
-	  		}
-	  		else
-	  		{
-	  			this.state.start('Level3');
-	  		};
-		};
+		}
 	}
 
 };
