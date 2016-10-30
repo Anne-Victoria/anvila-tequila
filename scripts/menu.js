@@ -11,7 +11,7 @@ var Menu = {
     startGame: function () {
 
         // Change the state to the actual game.
-        this.state.start('Level2');
+        this.state.start('Game');
 
     }
 
