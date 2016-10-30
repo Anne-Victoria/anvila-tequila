@@ -8,6 +8,16 @@ var Menu = {
 
     },
 
+    update: function () {
+        // press left, right, spacebar or enter to start game
+        if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)
+            || game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)
+            || game.input.keyboard.isDown(Phaser.Keyboard.ENTER)
+            || game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+            this.startGame();
+        }
+    },
+
     startGame: function () {
 
         // Change the state to the actual game.
